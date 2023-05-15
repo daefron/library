@@ -1,26 +1,44 @@
 let myLibrary = [];
+var num = 0;
 const bookshelf = document.querySelector(".bookshelf");
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, num) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.num = num;
 }
 
-//testing consts
 function addBookToLibrary() {
-  //get inputs
-  return myLibrary.push(new Book(title, author, pages, read));
+  let title = document.getElementById("title").value;
+  let author = document.getElementById("author").value;
+  let pages = document.getElementById("pages").value;
+  let read = document.getElementById("read").value;
+  if (title == "" || author == "" || pages == "") {
+    document.getElementById("validation").style.visibility = "visible";
+    return;
+  }
+  if (read == "on") {
+    read = "Read";
+    document.getElementById("read").click();
+  } else {
+    read = "Unread";
+  }
+  document.querySelector(".float").style.visibility = "hidden";
+  document.getElementById("title").value = "";
+  document.getElementById("author").value = "";
+  document.getElementById("pages").value = "";
+  ++num;
+  return addToBookshelf(new Book(title, author, pages, read, num));
 }
-
 
 function addToBookshelf(Book) {
-  let book = document.createElement('div');
+  let book = document.createElement("div" + num);
   book.classList.add("book");
   book.style.width = "100%";
-  book.style.height = '60px';
-  book.style.display = 'grid';
-  book.style['grid-template-columns'] = '3fr 2fr 1fr 1fr'
+  book.style.height = "60px";
+  book.style.display = "grid";
+  book.style["grid-template-columns"] = "3fr 2fr 1fr 1fr 1fr";
   bookshelf.appendChild(book);
   title = document.createElement("p");
   title.classList.add("title");
@@ -38,28 +56,16 @@ function addToBookshelf(Book) {
   read.classList.add("read");
   read.textContent = Book.read;
   book.appendChild(read);
+  return myLibrary.push(Book);
 }
 
-let title = "This is a long book title";
-let author = "Short Name";
-let pages = "300";
-let read = "READ";
-addBookToLibrary();
-title = "Short Title";
-author = "Very long Name Here";
-pages = "301";
-read = "NOT READ";
-addBookToLibrary();
-addBookToLibrary();
-console.log(myLibrary);
-myLibrary.forEach(addToBookshelf);
-
+//New Book modal
 const cancel = document.getElementById("cancel");
 const newBook = document.getElementById("new");
 const float = document.querySelector(".float");
-cancel.addEventListener('click', () => {
-  float.style.visibility = 'hidden';
-})
-newBook.addEventListener('click', () => {
-  float.style.visibility = 'visible';
-})
+cancel.addEventListener("click", () => {
+  float.style.visibility = "hidden";
+});
+newBook.addEventListener("click", () => {
+  float.style.visibility = "visible";
+});

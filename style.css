@@ -32,7 +32,7 @@ body {
   width: 85%;
   padding-inline: 20px;
   display: grid;
-  grid-template-columns: 3fr 2fr 1fr 1fr;
+  grid-template-columns: 3fr 2fr 1fr 1fr 1fr;
 }
 .spacer {
   height: 1px;
@@ -50,8 +50,9 @@ body {
   justify-content: center;
   align-items: center;
   position: fixed;
+  visibility: hidden;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5)
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .newBook {
   width: 500px;
@@ -62,6 +63,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-end;
+}
+.newBook > p {
+  margin: 0px;
+  font-weight: bold;
+  color: red;
+  visibility: hidden;
 }
 .form {
   display: flex;
