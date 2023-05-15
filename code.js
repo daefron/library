@@ -1,6 +1,5 @@
 let myLibrary = [];
 const bookshelf = document.querySelector(".bookshelf");
-
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -19,8 +18,9 @@ function addToBookshelf(Book) {
   let book = document.createElement('div');
   book.classList.add("book");
   book.style.width = "100%";
-  book.style.display = 'flex';
-  book.style['justify-content'] = 'space-between';
+  book.style.height = '60px';
+  book.style.display = 'grid';
+  book.style['grid-template-columns'] = '3fr 2fr 1fr 1fr'
   bookshelf.appendChild(book);
   title = document.createElement("p");
   title.classList.add("title");
@@ -40,16 +40,26 @@ function addToBookshelf(Book) {
   book.appendChild(read);
 }
 
-let title = "TITLE";
-let author = "AUTHOR";
+let title = "This is a long book title";
+let author = "Short Name";
 let pages = "300";
 let read = "READ";
 addBookToLibrary();
-title = "TITLE2";
-author = "AUTHOR2";
+title = "Short Title";
+author = "Very long Name Here";
 pages = "301";
-read = "READ2";
+read = "NOT READ";
 addBookToLibrary();
 addBookToLibrary();
 console.log(myLibrary);
 myLibrary.forEach(addToBookshelf);
+
+const cancel = document.getElementById("cancel");
+const newBook = document.getElementById("new");
+const float = document.querySelector(".float");
+cancel.addEventListener('click', () => {
+  float.style.visibility = 'hidden';
+})
+newBook.addEventListener('click', () => {
+  float.style.visibility = 'visible';
+})

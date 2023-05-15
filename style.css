@@ -1,9 +1,12 @@
+.float,
 body {
   height: 100vh;
   margin: 0;
 }
 .main {
-  height: 100%
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .header {
   padding-inline: 20px;
@@ -28,8 +31,8 @@ body {
 .headings {
   width: 85%;
   padding-inline: 20px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr 1fr;
 }
 .spacer {
   height: 1px;
@@ -38,4 +41,35 @@ body {
 }
 .bookshelf {
   width: 85%;
+  padding-inline: 20px;
+}
+.float {
+  width: 100%;
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.newBook {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 10px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }
