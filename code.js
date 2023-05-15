@@ -13,12 +13,12 @@ function addBookToLibrary() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
-  let read = document.getElementById("read").value;
+  let read = document.getElementById("read").checked;
   if (title == "" || author == "" || pages == "") {
     document.getElementById("validation").style.visibility = "visible";
     return;
   }
-  if (read == "on") {
+  if (read == "true") {
     read = "Read";
     document.getElementById("read").click();
   } else {
@@ -33,29 +33,42 @@ function addBookToLibrary() {
 }
 
 function addToBookshelf(Book) {
-  let book = document.createElement("div" + num);
+  let book = document.createElement("div");
+  let del = num;
+  book.id = "n" + num;
   book.classList.add("book");
   book.style.width = "100%";
   book.style.height = "60px";
   book.style.display = "grid";
   book.style["grid-template-columns"] = "3fr 2fr 1fr 1fr 1fr";
   bookshelf.appendChild(book);
+
   title = document.createElement("p");
   title.classList.add("title");
   title.textContent = Book.title;
   book.appendChild(title);
+
   author = document.createElement("p");
   author.classList.add("author");
   author.textContent = Book.author;
   book.appendChild(author);
+
   pages = document.createElement("p");
   pages.classList.add("pages");
   pages.textContent = Book.pages;
   book.appendChild(pages);
+
   read = document.createElement("p");
   read.classList.add("read");
   read.textContent = Book.read;
   book.appendChild(read);
+
+  del = document.createElement("button");
+  del.classList.add("delete");
+  del.id = num;
+  del.textContent = "Delete entry";
+  del.setAttribute("onclick","delBook('n' + this.id);");
+  book.appendChild(del);
   return myLibrary.push(Book);
 }
 
@@ -69,3 +82,7 @@ cancel.addEventListener("click", () => {
 newBook.addEventListener("click", () => {
   float.style.visibility = "visible";
 });
+
+function delBook(num1) {
+  document.getElementById(num1).remove();
+}
