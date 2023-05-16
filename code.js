@@ -18,6 +18,9 @@ function addBookToLibrary() {
     document.getElementById("validation").style.visibility = "visible";
     return;
   }
+  else {
+    document.getElementById("validation").style.visibility = "hidden";
+  }
   if (read == true) {
     read = "Read";
     document.getElementById("read").click();
@@ -40,7 +43,8 @@ function addToBookshelf(Book) {
   book.style.width = "100%";
   book.style.height = "60px";
   book.style.display = "grid";
-  book.style["grid-template-columns"] = "3fr 2fr 1fr 1fr 1fr 2fr";
+  book.style["grid-template-columns"] = "3fr 2fr 80px 60px 20px 100px";
+  book.style.gap = "10px";
   book.style["align-items"] = "center";
   bookshelf.appendChild(book);
 
@@ -79,7 +83,7 @@ function addToBookshelf(Book) {
   del = document.createElement("button");
   del.classList.add("delete");
   del.id = num;
-  del.textContent = "Delete entry";
+  del.textContent = "Delete";
   del.setAttribute("onclick", "delBook('n' + this.id);");
   book.appendChild(del);
   
@@ -102,8 +106,10 @@ function delBook(num1) {
 const cancel = document.getElementById("cancel");
 const newBook = document.getElementById("new");
 const float = document.querySelector(".float");
+const validation = document.getElementById('validation');
 cancel.addEventListener("click", () => {
   float.style.visibility = "hidden";
+  validation.style.visibility = "hidden";
 });
 newBook.addEventListener("click", () => {
   float.style.visibility = "visible";

@@ -18,8 +18,8 @@
         <div class="headings">
           <p>Title</p>
           <p>Author</p>
-          <p>Pages</p>
-          <p>Read?</p>
+          <p id="pag">Pages</p>
+          <p id="rea">Read?</p>
         </div>
         <div class="spacer"></div>
         <div class="bookshelf"></div>
@@ -39,17 +39,13 @@
         <div class="form">
           <p>Page count:</p>
           <input id="pages" type="number" required />
-        </div>
-        <p id="validation">*Please fill out all fields</p>
-        <div class="form">
           <p>Read?</p>
           <input id="read" type="checkbox" />
         </div>
+        <p id="validation">*Please fill out all fields</p>
         <div class="buttons">
           <button id="cancel">Cancel</button>
-          <button type="button" onClick="addBookToLibrary()" id="submit">
-            Submit
-          </button>
+          <button type="button" onClick="addBookToLibrary()" id="submit">Submit</button>
         </div>
       </form>
     </div>

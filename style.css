@@ -2,6 +2,7 @@
 body {
   height: 100vh;
   margin: 0;
+  font-family: Helvetica, sans-serif;
 }
 .main {
   height: 100%;
@@ -10,17 +11,26 @@ body {
   align-items: center;
 }
 .header {
-  width: 85%;
-  padding-inline: 20px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.header h1 {
+  margin-inline: 60px;
 }
 .header button {
+  margin-inline: 60px;
   width: 150px;
   height: 50px;
-  padding: 0;
-  border-radius: 10px;
+  line-height: 20px;
+  background-color: rgb(230, 230, 230);
+  border-style: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
 }
 .content {
   width: 100%;
@@ -34,16 +44,70 @@ body {
   width: 85%;
   padding-inline: 20px;
   display: grid;
-  grid-template-columns: 3fr 2fr 1fr 1fr 1fr 2fr;
+  gap: 10px;
+  grid-template-columns: 3fr 2fr 80px 60px 20px 100px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: -10px;
 }
-.spacer {
-  height: 1px;
-  width: 85%;
-  background-color: black;
+#rea {
+  margin-left: 20px;
 }
 .bookshelf {
   width: 85%;
   padding-inline: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.book {
+  background-color: white;
+  border-radius: 5px;
+  padding-block: 10px;
+  padding-inline: 20px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.book * {
+  height: 100%;
+  padding-inline: 20px;
+  line-height: 60px;
+  margin: 0px;
+  border-right: 1px solid rgb(220, 220, 220);
+  align-self: center;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.read {
+  text-align: left;
+  margin-right: -30px;
+  padding-inline: 0px;
+}
+.pages {
+  padding-inline: 0px;
+  margin-left: -10px;
+
+}
+.pages,
+.read {
+  width: auto;
+}
+.check {
+  justify-self: flex-start;
+  margin-left: -8px;
+}
+.delete {
+  line-height: 20px;
+  height: 40px;
+  width: 100px;
+  background-color: rgb(230, 230, 230);
+  justify-self: right;
+  border-style: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
 }
 .float {
   width: 100%;
@@ -57,7 +121,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .newBook {
-  width: 500px;
+  width: auto;
   height: auto;
   border-radius: 10px;
   padding: 20px;
@@ -65,11 +129,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: end;
 }
 .newBook > p {
+  font-size: 14px;
   margin: 0px;
-  font-weight: bold;
   color: red;
   visibility: hidden;
 }
@@ -79,13 +143,38 @@ body {
   justify-content: right;
   gap: 10px;
 }
-.buttons {
-  display: flex;
-  justify-content: space-between;
+.form p {
+  margin-inline: 0px;
+  margin-block: 5px;
 }
-
-.delete {
-  height: 40px;
-  width: 100px;
-  justify-self: right;
+.form input {
+  width: 100%;
+}
+#pages {
+  width: 55px;
+}
+#read {
+  width: 15px;
+}
+.buttons {
+  width: 100%;
+  padding: 20px;
+  margin-top: 5px;
+  margin-right: -20px;
+  margin-bottom: -20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+.buttons button {
+  width: 40%;
+  height: 30px;
+  background-color: rgb(230, 230, 230);
+  border-style: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
 }
