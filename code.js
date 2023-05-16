@@ -18,7 +18,7 @@ function addBookToLibrary() {
     document.getElementById("validation").style.visibility = "visible";
     return;
   }
-  if (read == "true") {
+  if (read == true) {
     read = "Read";
     document.getElementById("read").click();
   } else {
@@ -40,7 +40,8 @@ function addToBookshelf(Book) {
   book.style.width = "100%";
   book.style.height = "60px";
   book.style.display = "grid";
-  book.style["grid-template-columns"] = "3fr 2fr 1fr 1fr 1fr";
+  book.style["grid-template-columns"] = "3fr 2fr 1fr 1fr 1fr 2fr";
+  book.style["align-items"] = "center";
   bookshelf.appendChild(book);
 
   title = document.createElement("p");
@@ -60,18 +61,43 @@ function addToBookshelf(Book) {
 
   read = document.createElement("p");
   read.classList.add("read");
+  read.id = "r" + num;
   read.textContent = Book.read;
   book.appendChild(read);
+
+  check = document.createElement("input");
+  check.classList.add("check");
+  check.id = "c" + num;
+  check.setAttribute("type", "checkbox");
+  check.setAttribute("onclick", "checkedRead('r' + this.id.slice(1), this.id);");
+  if (read.textContent == "Read") {
+    check.setAttribute("checked", "true");
+  }
+  checkedI = check.id;
+  book.appendChild(check);
 
   del = document.createElement("button");
   del.classList.add("delete");
   del.id = num;
   del.textContent = "Delete entry";
-  del.setAttribute("onclick","delBook('n' + this.id);");
+  del.setAttribute("onclick", "delBook('n' + this.id);");
   book.appendChild(del);
+  
   return myLibrary.push(Book);
 }
 
+function checkedRead(check, checkedI) {
+  if (document.getElementById(checkedI).checked == false) {
+  document.getElementById(check).textContent = "Unread";
+  }
+  else {
+  document.getElementById(check).textContent = "Read";
+  }
+}
+
+function delBook(num1) {
+  document.getElementById(num1).remove();
+}
 //New Book modal
 const cancel = document.getElementById("cancel");
 const newBook = document.getElementById("new");
@@ -82,7 +108,3 @@ cancel.addEventListener("click", () => {
 newBook.addEventListener("click", () => {
   float.style.visibility = "visible";
 });
-
-function delBook(num1) {
-  document.getElementById(num1).remove();
-}
