@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="code.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Library</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <h1>Your Library</h1>
+        <button id="new">New Book</button>
+      </div>
+      <div class="content">
+        <div class="headings">
+          <p>Title</p>
+          <p>Author</p>
+          <p id="pag">Pages</p>
+          <p id="rea">Read?</p>
+        </div>
+        <div class="spacer"></div>
+        <div class="bookshelf"></div>
+      </div>
+      <div class="footer"></div>
+    </div>
+    <div class="float">
+      <form class="newBook" onkeydown="return event.key != 'Enter';">
+        <div class="form">
+          <p>Title:</p>
+          <input id="title" type="text" required />
+        </div>
+        <div class="form">
+          <p>Author:</p>
+          <input id="author" type="text" required />
+        </div>
+        <div class="form">
+          <p>Page count:</p>
+          <input id="pages" type="number" required />
+          <p>Read?</p>
+          <input id="read" type="checkbox" />
+        </div>
+        <p id="validation">*Please fill out all fields</p>
+        <div class="buttons">
+          <button id="cancel">Cancel</button>
+          <button type="button" onClick="addBookToLibrary()" id="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
